@@ -21,7 +21,6 @@ int main()
     	ptr = strtok(cmd, " ");
 		args[i] = ptr;
 		i++;
-		//printf("first token: %s\n", ptr);
 		do {
 			ptr = strtok(NULL, " ");
 			args[i] = ptr;
@@ -29,15 +28,11 @@ int main()
 			printf("subseq token: %s\n", ptr);
 		}while(ptr != NULL);
 
-		//  for(i=0; args[i]!=NULL; i++)
-	   // 	puts(args[i]);
-
 		if(strcmp(args[0], "exit") == 0)
-			break;	// internal command 1 -- exit
+			break;	
 		else if(strcmp(args[0], "cd") == 0)
-			chdir(args[1]);	// internal command 2 -- cd
+			chdir(args[1]);	
 		else {
-			// external commands
 			ret = fork();
 			if(ret == 0) {
 				err = execvp(args[0], args);
