@@ -11,10 +11,10 @@ int main() {
 	printf("parent started!\n");
 	ret = fork();
 	if(ret == 0) {
-		// output redirection
+		
 		fd = open("in.txt", O_RDONLY);
-		close(0); // stdout
-		dup(fd); // copy fd on stdout
+		close(0);
+		dup(fd);
 		close(fd);
       
 	   

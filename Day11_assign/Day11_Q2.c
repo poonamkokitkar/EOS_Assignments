@@ -22,13 +22,12 @@ int main() {
 
 	ret = fork();
 	if(ret == 0) {
-		// child -- writer process
 		close(arr1[0]); // close read fd
 		close(arr2[1]);
 
 		printf("child: enter two numbers: ");
 		scanf("%d %d",&num[0],&num[1]);
-		ret = write(arr1[1], &num[0], sizeof(num[1])); // write data in pipe
+		ret = write(arr1[1], &num[0], sizeof(num[1])); 
 		printf("child: data written in pipe: %d bytes\n", ret);
 		ret = write(arr1[1], &num[1], sizeof(num[1]));
 		printf("data written in pipe: %d bytes\n",ret);
@@ -36,21 +35,21 @@ int main() {
 		read(arr2[0], &res, sizeof(res));
 		printf("result: %d\n",res);
 
-		close(arr2[0]); // close write fd
+		close(arr2[0]); 
 		close(arr1[1]);
 	}
 	else {
-		// parent -- reader process
-		close(arr1[1]); // close write fd
+		
+		close(arr1[1]);
 		close(arr2[0]);
 		printf("parent: waiting for data...\n");
-		read(arr1[0], &n1, sizeof(n1)); // read data from pipe
+		read(arr1[0], &n1, sizeof(n1));
 		read(arr1[0], &n2, sizeof(n2));
 		sum = n1 + n2;
 		write(arr2[1], &sum, sizeof(sum));
 		
 		close(arr2[1]);
-		close(arr1[0]);	// close read fd
+		close(arr1[0]);
 		waitpid(-1, &s, 0);
 		printf("Parent completed!\n");
 	}
