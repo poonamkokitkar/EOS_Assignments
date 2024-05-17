@@ -1,5 +1,5 @@
 
-TARGET=main
+TARGET=project
 
 CSRCS= $(TARGET).c
 CSRCS+= 
