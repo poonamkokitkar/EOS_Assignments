@@ -16,8 +16,7 @@ int main() {
 		close(0);
 		dup(fd);
 		close(fd);
-      
-	   
+
 		err = execlp("wc", "wc", NULL);
 		if(err < 0) {
 			perror("exec() failed");

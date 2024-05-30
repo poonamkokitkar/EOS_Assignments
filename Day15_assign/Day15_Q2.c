@@ -11,6 +11,7 @@ typedef struct array{
 	int arr[10];
 	int size;
 } arr_t ;
+arr_t a;
 
 void* bubble_sort(void *param){
 int  i, j;  
@@ -36,7 +37,7 @@ arr_t *p1;
 	return NULL;
 }
 
-arr_t a;
+//arr_t a;
 
 int main() {
 	int ret,i;
@@ -54,7 +55,7 @@ int main() {
 	pthread_join(t1, NULL);
 	printf("t1 array...\n");
 	for(i=0; i<10; i++)
-    	printf("%d ",a.arr[i]);
+    		printf("%d ",a.arr[i]);
 	printf("\n");
 	printf("press enter to exit...\n");
 	getchar();
